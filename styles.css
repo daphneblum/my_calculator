@@ -1,15 +1,18 @@
 *, *::before, *::after {
-  box-sizing: border-box;
-  font-family: 'Press Start 2P', system-ui;
-  font-weight: normal;
-  font-style: normal;
-}
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', system-ui;
+    font-weight: normal;
+    font-style: normal;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url('images/vibrant-pixel-art-wooden-planks-with-diverse-textures-colors_908344-84915.avif');
-  background-size: cover;
+    body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/rucksack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .title {
@@ -17,7 +20,7 @@ body {
     width: 100%;
     text-align: center;
     color: #e8d9a3;
-    margin-top: 40px;
+    margin-top: 70px;
     text-shadow: 
         2px 2px 0 #000,
         0 0 15px rgba(255, 200, 50, 0.8),
@@ -29,17 +32,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding-top: 150px;
 }
 
 .calculator-grid {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-    border-radius: 0;
-    border: 4px solid #3b2417;
+    border-radius: 5%;
+    border: 2px solid #5a3a22;
     outline: 2px solid #1e120c;
     box-shadow: 6px 6px 0 #1e120c,
                 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 
+        0 0 8px rgba(255, 200, 50, 0.9),
+        0 0 20px rgba(255, 160, 0, 0.6),
+        0 0 40px rgba(255, 100, 0, 0.3);
+    filter: contrast(0.95) brightness(0.95);
+    background-color: #2a1a12;
 }
 
 .calculator-grid > button {
@@ -47,14 +57,18 @@ body {
     font-size: 1.2rem;
     border: 2px solid #5a3a22;
     outline: none;
-    background-color: #d8c7a1;
+    background: linear-gradient(#e6d3a3, #d2b98c);
     color: #2a1a12;
-    box-shadow: 2px 2px 0 #3b2417;
     cursor: url('images/wand.png') 0 0, auto;
+    border-radius: 10%;
 }
 
 .calculator-grid > button:hover {
     background-color: rgb(205, 205, 201);
+    text-shadow: 
+        0 0 15px rgba(255, 200, 50, 0.8),
+        0 0 30px rgba(255, 60, 0, 0.872);
+    color: #e79b0e;
 }
 
 .calculator-grid > button:active {
@@ -68,8 +82,8 @@ body {
 
 .output {
     grid-column: 1 / -1;
-    background: linear-gradient(#0f0f0f, #1a1a1a);
-    color: #e8e2c8;
+    background: linear-gradient(#1a120c, #2a1a12);
+    color: #f5e6b3;
     text-shadow: 0 0 6px rgba(255, 230, 150, 0.5);
     background-color: rgba(0, 0, 0);
     display: flex;
@@ -79,6 +93,8 @@ body {
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
+    border-radius: 15%;
+    overflow: hidden;
 }
 
 .output .previous-operand {
@@ -115,4 +131,31 @@ body {
         0 0 20px rgba(255, 160, 0, 0.6),
         0 0 40px rgba(255, 100, 0, 0.3);
 
+}
+
+.dust-particle {
+  position: fixed;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 120, 0.8), rgba(255, 180, 50, 0));
+  pointer-events: none; /* so they don't interfere with clicks */
+  z-index: 999;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
 }

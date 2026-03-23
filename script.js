@@ -121,3 +121,42 @@ deleteButton.addEventListener('click', button => {
     calculator.delete()
     calculator.updateDisplay()
 })
+
+function createParticles() {
+  const numParticles = 50;
+
+  for (let i = 0; i < numParticles; i++) {
+    setTimeout(() => {
+      spawnParticle();
+    }, i * 300); // stagger the spawning so they don't all appear at once
+  }
+}
+
+function spawnParticle() {
+  const particle = document.createElement('div');
+  particle.classList.add('dust-particle');
+
+  // randomize position, size, and duration for variety
+  const x = Math.random() * 100;       // % across the screen
+  const size = Math.random() * 4 + 2;  // 2px to 6px
+  const duration = Math.random() * 10 + 8; // 8s to 18s
+  const delay = Math.random() * 5;      // slight extra delay
+
+  particle.style.cssText = `
+    left: ${x}vw;
+    width: ${size}px;
+    height: ${size}px;
+    animation-duration: ${duration}s;
+    animation-delay: ${delay}s;
+  `;
+
+  document.body.appendChild(particle);
+
+  // remove from DOM after animation ends to keep things clean
+  particle.addEventListener('animationend', () => {
+    particle.remove();
+    spawnParticle(); // respawn so there are always particles on screen
+  });
+}
+
+createParticles();
