@@ -5,6 +5,7 @@ A fantasy-themed calculator that transforms arithmetic into spellcasting. Instea
 
 
 Overview
+
 Arcane Ledger started as a standard JavaScript calculator and was progressively redesigned into an immersive retro-fantasy experience. The app is built with vanilla HTML, CSS, and JavaScript — no frameworks or dependencies — and features a rucksack background, glowing pixel-art display, parchment-style buttons, a custom wand cursor, and ambient floating dust particles.
 
 Features
@@ -22,7 +23,11 @@ Press Start 2P font — pixel-art typography loaded via Google Fonts
 
 
 Tech Stack
-TechnologyUsageHTMLApp structure and button layoutCSSFantasy theme, glow effects, particle animation, custom cursorJavaScriptCalculator logic, DOM manipulation, particle systemGoogle FontsPress Start 2P pixel-art font
+
+HTML - App structure and button layout
+CSS - Fantasy theme, glow effects, particle animation, custom cursor
+JavaScript - Calculator logic, DOM manipulation, particle system
+Google Fonts - Press Start 2P pixel-art font
 
 Project Structure
 arcane-ledger/
@@ -53,8 +58,18 @@ Or simply double-click index.html in your file explorer.
 How It Works
 Calculator Logic
 The app uses an object-oriented Calculator class with the following responsibilities:
-MethodDescriptionclear()Resets both operands and the stored operationdelete()Slices the last character from the current operandappendNumber(number)Appends a digit or decimal; guards against duplicate .chooseOperation(operation)Stores the operator; auto-computes if a previous operand already existscompute()Evaluates the stored expression using parseFloat; no-ops on invalid inputgetDisplayNumber(number)Formats integers with toLocaleString while preserving decimal digitsupdateDisplay()Writes formatted values to the two output div elements
+Method                                              Description
+____________________________________________________________________________________________________________________________________________________________________________
+clear()                                         Resets both operands and the stored operation
+delete()                                        Slices the last character from the current operand
+appendNumber(number)                            Appends a digit or decimal; guards against duplicate .
+chooseOperation(operation)                      Stores the operator; auto-computes if a previous operand already exists
+compute()                                       Evaluates the stored expression using parseFloat; no-ops on invalid inputget
+DisplayNumber(number)                           Formats integers with toLocaleString while preserving decimal digits
+updateDisplay()                                 Writes formatted values to the two output div elements
+
 Event listeners are attached to all button groups ([data-number], [data-operation], [data-equals], [data-delete], [data-all-clear]) and call updateDisplay() after every interaction.
+
 Particle System
 The particle system runs entirely in vanilla JS and CSS with no canvas or external library.
 
